@@ -18,5 +18,8 @@ public class Ship : MonoBehaviour {
 			anotherTransform.rigidbody.velocity = new Vector3(3F,0,0);
 			//anotherTransform.rigidbody.velocity.Scale(new Vector3(1.5F,1.5F,1.5F));
 		}
+		if(Input.GetKeyDown(KeyCode.UpArrow)) {
+			transform.rigidbody.AddForce(new Vector3(3F,0,0));	
+		}
 	}
 }
