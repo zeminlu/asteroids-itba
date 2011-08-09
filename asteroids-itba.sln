@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+
+Project("{92C95A75-4668-8CE0-C64C-BB3B1CE881E0}") = "asteroids-itba", "Assembly-CSharp.csproj", "{52B0F8CC-1FE9-1F51-4778-C934E2BEB35C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52B0F8CC-1FE9-1F51-4778-C934E2BEB35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52B0F8CC-1FE9-1F51-4778-C934E2BEB35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52B0F8CC-1FE9-1F51-4778-C934E2BEB35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52B0F8CC-1FE9-1F51-4778-C934E2BEB35C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	
+EndGlobal
