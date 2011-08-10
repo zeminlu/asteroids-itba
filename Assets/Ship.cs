@@ -3,7 +3,7 @@ using UnityEngine;
 public class Ship : MonoBehaviour {
 	
 	public GameObject bullet;
-	
+	public float force;
 	void Start () {
 		
 	}
@@ -19,7 +19,7 @@ public class Ship : MonoBehaviour {
 			//anotherTransform.rigidbody.velocity.Scale(new Vector3(1.5F,1.5F,1.5F));
 		}
 		if(Input.GetKeyDown(KeyCode.UpArrow)) {
-			transform.rigidbody.AddForce(new Vector3(3F,0,0));	
+			transform.rigidbody.AddForce(new Vector3(force,0,0));	
 		}
 	}
 }

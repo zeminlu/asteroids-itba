@@ -10,7 +10,9 @@ public class Bullet : MonoBehaviour {
 		
 	}
 	
-	void OnTrigger () {
-		
+	void OnTriggerEnter (Collider other) {
+		if(!other.CompareTag("Player")) {
+			
+		}
 	}
 }
