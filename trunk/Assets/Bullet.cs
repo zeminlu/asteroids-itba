@@ -7,7 +7,9 @@ public class Bullet : MonoBehaviour {
 	}
 	
 	void Update () {
-		
+		if(!renderer.isVisible)	 {
+			DestroyObject(gameObject);	
+		}
 	}
 	
 	void OnTriggerEnter (Collider other) {
