@@ -1,0 +1,94 @@
+fileFormatVersion: 1
+guid: 185c904cc6ad2401f874db49fc38ee3d
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Key Light.target:
+    - 100000
+    - 400000
+    //RootNode:
+    - 100002
+    - 400002
+    - 11100000
+    Missile Ca.target:
+    - 100004
+    - 400004
+    Fill Light:
+    - 100006
+    - 400006
+    'Fins ':
+    - 100008
+    - 400008
+    - 3300000
+    - 2300000
+    Key Light:
+    - 100010
+    - 400010
+    Warhead/Gu:
+    - 100012
+    - 400012
+    - 3300002
+    - 2300002
+    Missile Ca:
+    - 100014
+    - 400014
+    Missile R0:
+    - 100016
+    - 400016
+    - 3300004
+    - 2300004
+    MP02:
+    - 100018
+    - 400018
+    - 3300006
+    - 2300006
+    MP03:
+    - 100020
+    - 400020
+    - 3300008
+    - 2300008
+    Rocket Noz:
+    - 100022
+    - 400022
+    - 3300010
+    - 2300010
+    MP01:
+    - 100024
+    - 400024
+    - 3300012
+    - 2300012
+    Missile Ri:
+    - 100026
+    - 400026
+    - 3300014
+    - 2300014
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: MP01
+    4300002: Rocket Noz
+    4300004: Missile Ri
+    4300006: MP02
+    4300008: Missile R0
+    4300010: MP03
+    4300012: Warhead/Gu
+    4300014: 'Fins '
