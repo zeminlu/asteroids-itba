@@ -13,15 +13,13 @@ public class Ship : MonoBehaviour {
 	
 	void Update () {
 		float horizontal = Input.GetAxis("Horizontal");
-		bool vertical = Input.GetButton("Vertical");
+		float vertical = Input.GetAxis("Vertical");
 		transform.Rotate(new Vector3(horizontal*Time.deltaTime*rotationSpeed,0,0));
 		
-		if (vertical) {
-			if (Input.GetAxis("Vertical") > 0){
-				thrust.maxEmission = 100;
-				thrust.minEmission = 100;
-			}
-			rigidbody.AddForce(transform.forward * Time.deltaTime * force * Input.GetAxis("Vertical"));	
+		if (Mathf.Abs(vertical) > 0.15) {
+			thrust.maxEmission = 100;
+			thrust.minEmission = 100;
+			rigidbody.AddForce(transform.forward * Time.deltaTime * force * vertical);	
 		} else {
 			thrust.maxEmission = 5;
 			thrust.minEmission = 5;
