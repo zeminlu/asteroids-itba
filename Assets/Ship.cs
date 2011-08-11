@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 	
+	public ParticleEmitter thrust;
 	public GameObject bullet;
 	public float force;
 	public float rotationSpeed;
 	public float shootStrengh;
 	void Start () {
-		
+		thrust.enabled = true;
 	}
 	
 	void Update () {
@@ -15,10 +16,17 @@ public class Ship : MonoBehaviour {
 		bool vertical = Input.GetButton("Vertical");
 		transform.Rotate(new Vector3(horizontal*Time.deltaTime*rotationSpeed,0,0));
 		
-		if(vertical) {
-			rigidbody.AddForce(transform.forward * Time.deltaTime * force);	
+		if (vertical) {
+			if (Input.GetAxis("Vertical") > 0){
+				thrust.maxEmission = 100;
+				thrust.minEmission = 100;
+			}
+			rigidbody.AddForce(transform.forward * Time.deltaTime * force * Input.GetAxis("Vertical"));	
+		} else {
+			thrust.maxEmission = 5;
+			thrust.minEmission = 5;
 		}
-		
+					
 		
 		if(Input.GetKeyDown(KeyCode.Space)) {
 			GameObject bulletGameObject = (GameObject)Instantiate(bullet);
