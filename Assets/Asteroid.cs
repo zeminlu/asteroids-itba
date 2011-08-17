@@ -4,6 +4,7 @@ public class Asteroid : MonoBehaviour {
 
 	public float rotationSpeed;
 	public int generation;
+	public GameObject explosion;
 	
 	void Start () {
 		rigidbody.drag = 0;
@@ -11,6 +12,13 @@ public class Asteroid : MonoBehaviour {
 		//rigidbody.AddForce(Vector3.forward * force);
 	}
 	
+	void OnTriggerEnter (Collider other) {
+		if(other.CompareTag("Player")) {
+			DestroyObject(other.gameObject);
+			GameObject go = (GameObject)Instantiate(explosion);
+			go.transform.position = other.transform.position;
+		}
+	}
 	
 	void Update () {
 		if(!renderer.isVisible)	 {
