@@ -13,8 +13,16 @@ public class Bullet : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter (Collider other) {
-		if(!other.CompareTag("Player")) {
+		if(other.CompareTag("Asteroid")) {
 			DestroyObject(gameObject);
+			GameObject asteroid = other.gameObject;
+			foreach (Transform child in asteroid.transform) {
+				Debug.Log("asdf");
+				//if(child.gameObject.rigidbody != null) {
+					child.gameObject.active = true;
+				//}
+			}
+			//asteroid.active = false;
 		}
 	}
 }

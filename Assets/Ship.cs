@@ -12,6 +12,16 @@ public class Ship : MonoBehaviour {
 	}
 	
 	void Update () {
+		if(Input.GetButtonDown("Fire1")) {
+			GameObject bulletGameObject = (GameObject)Instantiate(bullet);	
+			Transform anotherTransform = bulletGameObject.transform;
+			anotherTransform.position = transform.position;
+			anotherTransform.rotation = transform.rotation;	
+			anotherTransform.rigidbody.AddForce(transform.forward * Time.deltaTime * shootStrengh);	
+		}
+	}
+	
+	void FixedUpdate() {
 		float horizontal = Input.GetAxis("Horizontal");
 		float vertical = Input.GetAxis("Vertical");
 		transform.Rotate(new Vector3(horizontal*Time.deltaTime*rotationSpeed,0,0));
@@ -25,15 +35,6 @@ public class Ship : MonoBehaviour {
 		} else {
 			thrust.maxEmission = 5;
 			thrust.minEmission = 5;
-		}
-					
-		
-		if(Input.GetKeyDown(KeyCode.Space)) {
-			GameObject bulletGameObject = (GameObject)Instantiate(bullet);
-			Transform anotherTransform = bulletGameObject.transform;
-			anotherTransform.position = transform.position;
-			anotherTransform.rotation = transform.rotation;	
-			anotherTransform.rigidbody.AddForce(transform.forward * Time.deltaTime * shootStrengh);	
 		}
 		
 	}
