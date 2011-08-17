@@ -18,6 +18,7 @@ public class AsteroidManager : MonoBehaviour {
 		fullScale = new Vector3(1, 1, 1);
 		mediumScale = new Vector3(0.3F, 0.3F, 0.3F);
 		smallScale = new Vector3(0.1F, 0.1F, 0.1F);
+		
 		warpZones = (GameObject)Instantiate(warpZones);
 		activeAsteroids = new List<GameObject>(initialAsteroids);
 		pasiveAsteroids = new List<GameObject>(initialAsteroids * 12);
@@ -28,26 +29,20 @@ public class AsteroidManager : MonoBehaviour {
 			GameObject tmpAsteroid = (GameObject)Instantiate(asteroid);
 			tmpAsteroid.transform.position = positions[i + 1].position;
 			tmpAsteroid.transform.rotation = warpZones.transform.rotation;
-			tmpAsteroid.active = true;
-			tmpAsteroid.transform.rigidbody.AddForce(transform.forward * Time.deltaTime * force);	
+			tmpAsteroid.transform.Rotate(new Vector3(0, 120 * i - RandomNumber(0, 10) * 30, 0));
+			tmpAsteroid.transform.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 5, ForceMode.Force);	
 			activeAsteroids.Add(tmpAsteroid);
 		}
 		
 		for (int i = 0 ; i < initialAsteroids * 12 ; ++i){
 			GameObject tmpAsteroid = (GameObject)Instantiate(asteroid);
-			foreach (Transform child in tmpAsteroid.GetComponentsInChildren<Transform>()) {
-				child.gameObject.active = false;
-			}
-			tmpAsteroid.active = false;
+			tmpAsteroid.SetActiveRecursively(false);
 			pasiveAsteroids.Add(tmpAsteroid);
 		}
 	}
 	
 	
 	void Update () {
-		//if(!renderer.isVisible)	 {
-		//	DestroyObject(gameObject);
-		//}
 	}
 	
 	public void hitAsteroid(GameObject otherAsteroid){
@@ -56,12 +51,8 @@ public class AsteroidManager : MonoBehaviour {
 		Transform[] positions = warpZones.transform.GetComponentsInChildren<Transform>();
 		
 		activeAsteroids.Remove(otherAsteroid);
-		foreach (Transform child in otherAsteroid.GetComponentsInChildren<Transform>()) {
-			child.gameObject.active = false;
-		}
-		otherAsteroid.active = false;
+		otherAsteroid.SetActiveRecursively(false);
 
-		
 		for (int i = 0 ; i < 3 ; ++i){
 			if (pasiveAsteroids.Count == 0){
 				tmpAsteroid = (GameObject)Instantiate(asteroid);
@@ -69,9 +60,8 @@ public class AsteroidManager : MonoBehaviour {
 				tmpAsteroid = pasiveAsteroids[0];
 				pasiveAsteroids.RemoveAt(0);
 			}
-			Quaternion tmpRotation = otherAsteroid.transform.rotation;
-			tmpRotation.x += 120 * i;
-			tmpAsteroid.transform.rotation = tmpRotation;
+			
+			tmpAsteroid.transform.Rotate(new Vector3(0, 120 * i - RandomNumber(0, 10) * 30, 0));
 			
 			if (otherAsteroid.transform.localScale.Equals(fullScale)){
 				tmpAsteroid.transform.position = tmpPostition;
@@ -84,11 +74,8 @@ public class AsteroidManager : MonoBehaviour {
 				tmpAsteroid.transform.localScale = fullScale;
 			}
 			
-			tmpAsteroid.active = true;
-			foreach (Transform child in tmpAsteroid.GetComponentsInChildren<Transform>()) {
-				child.gameObject.active = true;
-			}
-			tmpAsteroid.transform.rigidbody.AddForce(transform.forward * Time.deltaTime * force);	
+			tmpAsteroid.SetActiveRecursively(true);
+			tmpAsteroid.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 5, ForceMode.Force);
 			activeAsteroids.Add(tmpAsteroid);
 		}
 		otherAsteroid.transform.localScale = fullScale;
