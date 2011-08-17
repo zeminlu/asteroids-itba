@@ -13,6 +13,10 @@ public class AsteroidManager : MonoBehaviour {
 	private Vector3 fullScale;
 	private Vector3 mediumScale;
 	private Vector3 smallScale;
+	private float score = 0;
+	private static int lowScore = 100;
+	private static int mediumScore = 200;
+	private static int highScore = 300;
 	
 	void Start () {
 		fullScale = new Vector3(1, 1, 1);
@@ -39,6 +43,7 @@ public class AsteroidManager : MonoBehaviour {
 			tmpAsteroid.SetActiveRecursively(false);
 			pasiveAsteroids.Add(tmpAsteroid);
 		}
+		score = 0;
 	}
 	
 	
@@ -52,7 +57,15 @@ public class AsteroidManager : MonoBehaviour {
 		
 		activeAsteroids.Remove(otherAsteroid);
 		otherAsteroid.SetActiveRecursively(false);
-
+		
+		if (otherAsteroid.transform.localScale.Equals(fullScale)) {
+			score += highScore;	
+		} else if (otherAsteroid.transform.localScale.Equals(mediumScale)) {
+			score += mediumScore;	
+		} else {
+			score += lowScore;
+		}
+		
 		for (int i = 0 ; i < 3 ; ++i){
 			if (pasiveAsteroids.Count == 0){
 				tmpAsteroid = (GameObject)Instantiate(asteroid);

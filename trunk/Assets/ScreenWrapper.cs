@@ -4,6 +4,7 @@ public class ScreenWrapper : MonoBehaviour {
 		
 	public Vector2 wrap;
 	public Vector2 wrapMax;
+	public float distanceToWrap;
 	
 	void Awake () {
 		Vector3 wrapmin = Camera.main.ScreenToWorldPoint(new Vector3(0,0,Camera.main.transform.position.y));
@@ -14,17 +15,17 @@ public class ScreenWrapper : MonoBehaviour {
 	
 	void Update () {
 		Vector3 newPosition = transform.position;
-		if(transform.position.x > wrapMax.x) {
-			newPosition.x = wrap.x;	
+		if(transform.position.x > wrapMax.x + distanceToWrap) {
+			newPosition.x = wrap.x - distanceToWrap;	
 		}
-		if(transform.position.x < wrap.x) {
-			newPosition.x = wrapMax.x;	
+		if(transform.position.x < wrap.x - distanceToWrap) {
+			newPosition.x = wrapMax.x + distanceToWrap;	
 		}
-		if(transform.position.z > wrapMax.y) {
-			newPosition.z = wrap.y;	
+		if(transform.position.z > wrapMax.y + distanceToWrap) {
+			newPosition.z = wrap.y - distanceToWrap;	
 		}
-		if(transform.position.z < wrap.y) {
-			newPosition.z = wrapMax.y;	
+		if(transform.position.z < wrap.y - distanceToWrap) {
+			newPosition.z = wrapMax.y + distanceToWrap;	
 		}
 		transform.position = newPosition;
 	}
