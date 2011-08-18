@@ -79,6 +79,9 @@ public class AsteroidManager : MonoBehaviour {
 		otherAsteroid.SetActiveRecursively(false);
 		GameObject expl = (GameObject)Instantiate(explosion);
 		expl.transform.position = otherAsteroid.transform.position;
+		Vector3 scale = expl.transform.localScale;
+		scale = scale*0.5f;
+		expl.transform.localScale = scale;
 		
 		if (otherAsteroid.transform.localScale.Equals(fullScale)) {
 			score += highScore;	

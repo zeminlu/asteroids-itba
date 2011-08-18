@@ -14,7 +14,6 @@ public class Ship : MonoBehaviour {
 	
 	void Start () {
 		thrust.enabled = true;
-		//menuManager = (GameObject)Instantiate(menuManager);
 		menuManager.SetActiveRecursively(false);
 	}
 	
@@ -47,10 +46,10 @@ public class Ship : MonoBehaviour {
 	}
 	
 	void OnDestroy () {
+		menuManager.SetActiveRecursively(true);
 		GameObject exp = (GameObject)Instantiate(explosion);
 		exp.transform.position = transform.position;
 		GameObject smo = (GameObject)Instantiate(smoke);
 		smo.transform.position = transform.position;
-		menuManager.SetActiveRecursively(true);
 	}
 }
