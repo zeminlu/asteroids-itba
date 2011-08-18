@@ -7,8 +7,13 @@ public class Ship : MonoBehaviour {
 	public float force;
 	public float rotationSpeed;
 	public float shootStrengh;
+	public GameObject menuManager;
+	public GameObject explosion;
+
+	
 	void Start () {
 		thrust.enabled = true;
+		menuManager.SetActiveRecursively(false);
 	}
 	
 	void Update () {
@@ -36,6 +41,12 @@ public class Ship : MonoBehaviour {
 			thrust.maxEmission = 5;
 			thrust.minEmission = 5;
 		}
-		
+
+	}
+	
+	void OnDestroy () {
+		menuManager.SetActiveRecursively(true);	
+		GameObject go = (GameObject)Instantiate(explosion);
+		go.transform.position = transform.position;
 	}
 }

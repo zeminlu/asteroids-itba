@@ -4,7 +4,6 @@ public class Asteroid : MonoBehaviour {
 
 	public float rotationSpeed;
 	public int generation;
-	public GameObject explosion;
 	
 	void Start () {
 		rigidbody.drag = 0;
@@ -15,8 +14,6 @@ public class Asteroid : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		if(other.CompareTag("Player")) {
 			DestroyObject(other.gameObject);
-			GameObject go = (GameObject)Instantiate(explosion);
-			go.transform.position = other.transform.position;
 		}
 	}
 	

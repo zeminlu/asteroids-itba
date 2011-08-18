@@ -8,6 +8,7 @@ public class AsteroidManager : MonoBehaviour {
 	public int initialAsteroids;
 	public GameObject asteroid;
 	public GameObject warpZones;
+	
 	private List<GameObject> activeAsteroids;
 	private List<GameObject> pasiveAsteroids;
 	private Vector3 fullScale;
@@ -99,5 +100,9 @@ public class AsteroidManager : MonoBehaviour {
 	private int RandomNumber(int min, int max){
 		System.Random random = new System.Random();
 		return random.Next(min, max);
+	}
+	
+	void OnGUI () {
+		GUI.Label(new Rect(Screen.width - 100, Screen.height - 40 , 90, 30), "Score: "+score);
 	}
 }
