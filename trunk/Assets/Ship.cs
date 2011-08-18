@@ -33,8 +33,8 @@ public class Ship : MonoBehaviour {
 		
 		if (Mathf.Abs(vertical) > 0.15) {
 			if(vertical > 0){
-				thrust.maxEmission = 100;
-				thrust.minEmission = 100;
+				thrust.maxEmission = 50;
+				thrust.minEmission = 50;
 			}
 			rigidbody.AddForce(transform.forward * Time.deltaTime * force * vertical);	
 		} else {
