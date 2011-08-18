@@ -9,10 +9,12 @@ public class Ship : MonoBehaviour {
 	public float shootStrengh;
 	public GameObject menuManager;
 	public GameObject explosion;
+	public GameObject smoke;
 
 	
 	void Start () {
 		thrust.enabled = true;
+		//menuManager = (GameObject)Instantiate(menuManager);
 		menuManager.SetActiveRecursively(false);
 	}
 	
@@ -45,8 +47,10 @@ public class Ship : MonoBehaviour {
 	}
 	
 	void OnDestroy () {
-		menuManager.SetActiveRecursively(true);	
-		GameObject go = (GameObject)Instantiate(explosion);
-		go.transform.position = transform.position;
+		GameObject exp = (GameObject)Instantiate(explosion);
+		exp.transform.position = transform.position;
+		GameObject smo = (GameObject)Instantiate(smoke);
+		smo.transform.position = transform.position;
+		menuManager.SetActiveRecursively(true);
 	}
 }
