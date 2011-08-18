@@ -52,7 +52,6 @@ public class AsteroidManager : MonoBehaviour {
 			GameObject tmpAsteroid = (GameObject)Instantiate(asteroid);
 			tmpAsteroid.transform.localScale = fullScale;
 			tmpAsteroid.SetActiveRecursively(false);
-			tmpAsteroid.transform.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 4, ForceMode.Force);	
 			pasiveAsteroids.Add(tmpAsteroid);
 		}
 		score = 0;
@@ -67,7 +66,7 @@ public class AsteroidManager : MonoBehaviour {
 			tmpAsteroid.transform.position = positions[RandomNumber(1, positions.Length - 1)].position;
 			tmpAsteroid.transform.rotation = warpZones.transform.rotation;
 			tmpAsteroid.transform.Rotate(new Vector3(0F, 180 - RandomNumber(1, 10) * 30F, 0F));
-			tmpAsteroid.transform.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * (4 + RandomNumber(0, 10) / 10), ForceMode.Force);	
+			tmpAsteroid.transform.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 4, ForceMode.Force);	
 			activeAsteroids.Add(tmpAsteroid);
 		}
 	}
@@ -96,7 +95,6 @@ public class AsteroidManager : MonoBehaviour {
 			if (++smallHits >= 9){
 				if (pasiveAsteroids.Count == 0){
 					tmpAsteroid = (GameObject)Instantiate(asteroid);
-					tmpAsteroid.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 4, ForceMode.Force);
 				} else {
 					tmpAsteroid = pasiveAsteroids[0];
 					pasiveAsteroids.RemoveAt(0);
@@ -107,13 +105,13 @@ public class AsteroidManager : MonoBehaviour {
 				tmpAsteroid.transform.position = positions[RandomNumber(1, positions.Length - 1)].position;
 				tmpAsteroid.transform.localScale = fullScale;
 				tmpAsteroid.SetActiveRecursively(true);
+				tmpAsteroid.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 4, ForceMode.Force);
 				activeAsteroids.Add(tmpAsteroid);
 			}
 		} else {
 			for (int i = 0 ; i < 3 ; ++i){
 				if (pasiveAsteroids.Count == 0){
 					tmpAsteroid = (GameObject)Instantiate(asteroid);
-					tmpAsteroid.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 4, ForceMode.Force);
 				} else {
 					tmpAsteroid = pasiveAsteroids[0];
 					pasiveAsteroids.RemoveAt(0);
@@ -136,6 +134,7 @@ public class AsteroidManager : MonoBehaviour {
 				}
 				
 				tmpAsteroid.SetActiveRecursively(true);
+				tmpAsteroid.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 4, ForceMode.Force);
 				activeAsteroids.Add(tmpAsteroid);
 			}
 		}
