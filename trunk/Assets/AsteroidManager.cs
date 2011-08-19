@@ -15,10 +15,11 @@ public class AsteroidManager : MonoBehaviour {
 	private Vector3 fullScale;
 	private Vector3 mediumScale;
 	private Vector3 smallScale;
-	private float score = 0;
-	private static int lowScore = 100;
-	private static int mediumScore = 200;
-	private static int highScore = 300;
+	private int score = 0;
+	private int highscore = 0;
+	private static int lowScoreValue = 100;
+	private static int mediumScoreValue = 200;
+	private static int highScoreValue = 300;
 	private int smallHits;
 	private float localTime;
 	private float timeTreshold;
@@ -55,6 +56,7 @@ public class AsteroidManager : MonoBehaviour {
 			pasiveAsteroids.Add(tmpAsteroid);
 		}
 		score = 0;
+		highscore = PlayerPrefs.GetInt("HighScore", 0);
 	}
 	
 	
@@ -68,6 +70,9 @@ public class AsteroidManager : MonoBehaviour {
 			tmpAsteroid.transform.Rotate(new Vector3(0F, 180 - RandomNumber(1, 10) * 30F, 0F));
 			tmpAsteroid.transform.rigidbody.AddForce(tmpAsteroid.transform.forward * Time.deltaTime * force * 4, ForceMode.Force);	
 			activeAsteroids.Add(tmpAsteroid);
+		}
+		if(score > highscore) {
+			highscore = score;	
 		}
 	}
 	
@@ -84,13 +89,13 @@ public class AsteroidManager : MonoBehaviour {
 		expl.transform.localScale = scale;
 		
 		if (otherAsteroid.transform.localScale.Equals(fullScale)) {
-			score += highScore;	
+			score += highScoreValue;	
 			expl.transform.localScale = new Vector3(2F, 2F, 2F);
 		} else if (otherAsteroid.transform.localScale.Equals(mediumScale)) {
-			score += mediumScore;
+			score += mediumScoreValue;
 			expl.transform.localScale = new Vector3(0.1F, 0.1F, 0.1F);
 		} else {
-			score += lowScore;
+			score += lowScoreValue;
 			expl.transform.localScale = new Vector3(0.005F, 0.005F, 0.005F);
 		}
 		
@@ -130,7 +135,6 @@ public class AsteroidManager : MonoBehaviour {
 					tmpAsteroid.transform.localScale = smallScale;
 				}else {
 					Debug.Log("Algo malo pasó");
-					Debug.Log(otherAsteroid.transform.localScale);
 					tmpAsteroid.SetActiveRecursively(false);
 					pasiveAsteroids.Add(tmpAsteroid);
 					break;
@@ -150,7 +154,12 @@ public class AsteroidManager : MonoBehaviour {
 		return random.Next(min, max);
 	}
 	
+	public int getHighScore() {
+		return highscore;	
+	}
+	
 	void OnGUI () {
-		GUI.Label(new Rect(Screen.width - 100, Screen.height - 40 , 90, 30), "Score: "+score);
+		GUI.Label(new Rect(Screen.width - 130, Screen.height - 40 , 120, 30), "Score: "+score);
+		GUI.Label(new Rect(20, Screen.height - 40 , 120, 30), "HighScore: "+highscore);
 	}
 }
