@@ -27,10 +27,7 @@ public class Menu : MonoBehaviour {
 		if(GUI.Button(new Rect(10, buttonSeparation, buttonWidth, buttonHeight), "Restart")) {
 			Application.LoadLevel("Scene1");
 		}
-		if(GUI.Button(new Rect(10, buttonSeparation + (buttonSeparation + buttonHeight), buttonWidth, buttonHeight), "HighScores")) {
-			Application.LoadLevel("Scene1");
-		}
-		if(GUI.Button(new Rect(10, buttonSeparation + (buttonSeparation + buttonHeight) * 2, buttonWidth, buttonHeight), "Quit")) {
+		if(GUI.Button(new Rect(10, buttonSeparation + (buttonSeparation + buttonHeight), buttonWidth, buttonHeight), "Quit")) {
 			Application.Quit();
 		}
 		

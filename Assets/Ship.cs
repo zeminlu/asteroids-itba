@@ -46,6 +46,8 @@ public class Ship : MonoBehaviour {
 	}
 	
 	void OnDestroy () {
+		AsteroidManager asteroidManager = SingletonManager.GetAsteroidManager();
+		PlayerPrefs.SetInt("HighScore",asteroidManager.getHighScore());
 		menuManager.SetActiveRecursively(true);
 		GameObject exp = (GameObject)Instantiate(explosion);
 		exp.transform.position = transform.position;
