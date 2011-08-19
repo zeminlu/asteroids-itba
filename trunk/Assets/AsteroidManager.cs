@@ -9,6 +9,7 @@ public class AsteroidManager : MonoBehaviour {
 	public GameObject asteroid;
 	public GameObject warpZones;
 	public GameObject explosion;
+	public GUISkin skin;
 	
 	private List<GameObject> activeAsteroids;
 	private List<GameObject> pasiveAsteroids;
@@ -159,7 +160,7 @@ public class AsteroidManager : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		GUI.Label(new Rect(Screen.width - 130, Screen.height - 40 , 120, 30), "Score: "+score);
-		GUI.Label(new Rect(20, Screen.height - 40 , 120, 30), "HighScore: "+highscore);
+		GUI.Label(new Rect(Screen.width - 100, Screen.height - 40 , 90, 30), "Score: "+score, skin.label);
+		GUI.Label(new Rect(20, Screen.height - 40 , 190, 30), "HighScore: "+highscore, skin.label);
 	}
 }

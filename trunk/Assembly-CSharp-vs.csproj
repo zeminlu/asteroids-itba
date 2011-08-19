@@ -51,6 +51,7 @@
      <Compile Include="Assets\ScreenWrapper.cs" />
      <Compile Include="Assets\Ship.cs" />
      <Compile Include="Assets\SingletonManager.cs" />
+     <Compile Include="Assets\SkinTest.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
