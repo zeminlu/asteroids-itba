@@ -1,0 +1,1 @@
+El proyecto consiste en desarrollar el juego Asteroids en Unity 3D para la materia Videojuegos del ITBA
